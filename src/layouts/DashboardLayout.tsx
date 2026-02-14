@@ -5,7 +5,7 @@ import { LayoutDashboard, Users, FolderKanban, Menu, X } from "lucide-react";
 import { useAppStore } from "@/store/appStore";
 
 const navItems = [
-  { to: "/", icon: LayoutDashboard, label: "Dashboard" },
+  { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { to: "/alumni", icon: Users, label: "Alumni Registry" },
   { to: "/projects", icon: FolderKanban, label: "Projects" },
 ];
