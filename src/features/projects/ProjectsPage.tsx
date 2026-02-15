@@ -2,13 +2,17 @@ import { motion } from "framer-motion";
 import { Users, Calendar } from "lucide-react";
 import StatusBadge from "@/components/StatusBadge";
 import { mockProjects } from "@/api/mockData";
+import AddProjectModal from "./AddProjectModal";
 
 export default function ProjectsPage() {
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-foreground">Projects</h1>
-        <p className="text-muted-foreground mt-1">Track fund sourcing campaigns and their progress.</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-foreground">Projects</h1>
+          <p className="text-muted-foreground mt-1">Track fund sourcing campaigns and their progress.</p>
+        </div>
+        <AddProjectModal />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
