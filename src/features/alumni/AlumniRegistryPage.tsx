@@ -14,6 +14,7 @@ import { alumniFilterSchema, type Alumni } from "@/api/schemas";
 import { mockAlumni } from "@/api/mockData";
 import StatusBadge from "@/components/StatusBadge";
 import { useAppStore } from "@/store/appStore";
+import AddAlumniModal from "./AddAlumniModal";
 
 const columnHelper = createColumnHelper<Alumni>();
 
@@ -96,9 +97,12 @@ export default function AlumniRegistryPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-foreground">Alumni Registry</h1>
-        <p className="text-muted-foreground mt-1">Manage and track alumni donors across your network.</p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-foreground">Alumni Registry</h1>
+          <p className="text-muted-foreground mt-1">Manage and track alumni donors across your network.</p>
+        </div>
+        <AddAlumniModal />
       </div>
 
       {/* Filters */}
