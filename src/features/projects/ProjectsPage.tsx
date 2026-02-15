@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Users, Calendar } from "lucide-react";
 import StatusBadge from "@/components/StatusBadge";
 import { mockProjects } from "@/api/mockData";
 import AddProjectModal from "./AddProjectModal";
+import ViewProjectModal from "./ViewProjectModal";
+import type { Project } from "@/api/schemas";
 
 export default function ProjectsPage() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -24,7 +29,8 @@ export default function ProjectsPage() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="glass-card rounded-lg p-5 space-y-4"
+              className="glass-card rounded-lg p-5 space-y-4 cursor-pointer hover:ring-1 hover:ring-accent/50 transition-shadow"
+              onClick={() => setSelectedProject(project)}
             >
               <div className="flex items-start justify-between">
                 <div>
@@ -66,6 +72,13 @@ export default function ProjectsPage() {
           );
         })}
       </div>
+      {selectedProject && (
+        <ViewProjectModal
+          project={selectedProject}
+          open={!!selectedProject}
+          onOpenChange={(open) => { if (!open) setSelectedProject(null); }}
+        />
+      )}
     </div>
   );
 }
